@@ -1,11 +1,11 @@
 .syntax unified
 
-.global _start
+.global _startup
 
-.type _start, %function
+.type _startup, %function
 
 	.word 0x20000100
-	.word _start
+	.word _startup
 
-_start:
+_startup:
 	b	mymain

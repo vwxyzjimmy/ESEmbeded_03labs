@@ -25,7 +25,7 @@ void mymain(void)
 	static int uninit_static_local;
 
 	uninit_local_rw_str[0] = uninit_local_rw_str[1] = uninit_local_rw_str[2] = 'E'; // ASCII 'D' : 0x45
-
+	func();
 	while (1)
 		;
 }
