@@ -10,8 +10,8 @@ char *global_ro_str = "BBB"; // ASCII 'B' : 0x42
 static int init_static_global = 0x3333;
 static int uninit_static_global;
 
-int func(void);
-
+int func(int pass);
+void pass_four_para(int a, int b, int c, int d, int e);
 void mymain(void)
 {
 	int init_local = 0x4444;
@@ -27,15 +27,20 @@ void mymain(void)
 	static int uninit_static_local;
 
 	uninit_local_rw_str[0] = uninit_local_rw_str[1] = uninit_local_rw_str[2] = 'E'; // ASCII 'D' : 0x45
-	int v = func();
-	v = v + 1;
+
+	uninit_local = func(init_local);
+	pass_four_para(1, 2, 3, 4, 5);
 	while (1)
 		;
 }
 
-int func(void)
+int func(int pass)
 {
 	static int init_static_local = 0x7777;
 	static int uninit_static_local;
-	int z = 0;
+	return (init_static_local + pass);
+}
+
+void pass_four_para(int a, int b, int c, int d, int e){
+	int nothing = a+b+c+d+e;
 }
