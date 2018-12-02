@@ -10,6 +10,8 @@ char *global_ro_str = "BBB"; // ASCII 'B' : 0x42
 static int init_static_global = 0x3333;
 static int uninit_static_global;
 
+int func(void);
+
 void mymain(void)
 {
 	int init_local = 0x4444;
@@ -25,13 +27,15 @@ void mymain(void)
 	static int uninit_static_local;
 
 	uninit_local_rw_str[0] = uninit_local_rw_str[1] = uninit_local_rw_str[2] = 'E'; // ASCII 'D' : 0x45
-	func();
+	int v = func();
+	v = v + 1;
 	while (1)
 		;
 }
 
-void func(void)
+int func(void)
 {
 	static int init_static_local = 0x7777;
 	static int uninit_static_local;
+	int z = 0;
 }

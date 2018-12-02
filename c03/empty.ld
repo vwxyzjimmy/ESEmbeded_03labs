@@ -1,6 +1,6 @@
 SECTIONS
 {
-	. = 0X0;
+	. = 0x0;
 	._text :
 	{
 		KEEP(*(.startup))
